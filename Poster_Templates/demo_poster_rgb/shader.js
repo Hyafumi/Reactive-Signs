@@ -49,12 +49,19 @@ function getShader(_renderer) {
 				v += r * r / (dx * dx + dy * dy);
 			}
 
-			if (0.9 < v && v < 1.1) {
+			if (${minFrag} < v && v < ${maxFrag}) {
 				float a = (v - 0.9) * 4.;
-				gl_FragColor = vec4(vec3(255, 255, 255), 1.0);
+				gl_FragColor = vec4(vec3(255,255.,255.),1.);
 			} else gl_FragColor = vec4(0, 0, 0, 1.0);
+
+			gl_FragColor = vec4(v*0.2,v*0.2,v*0.2,1.);
+			
+
+
 		}
 	`;
 	
 	return new p5.Shader(_renderer, vert, frag);
 }
+
+// WHITE gl_FragColor = vec4(v*0.2,v*0.2,v*0.2,1.);
